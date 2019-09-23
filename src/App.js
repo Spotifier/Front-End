@@ -3,15 +3,15 @@ import {Route} from 'react-router-dom';
 
 // Application Component Imports
 import Navigation from './components/Navigation';
-import Dashboard from './components/pages/Dashboard';
-import Login from './components/pages/Login';
+import Dashboard from './components/Dashboard';
+import Login from './components/Login';
 
 function App() {
 
   return (
-    <div>
+    <div class="app-wrapper">
       <Navigation />
-      <Route exact path="/" component={Login} />
+      <Route exact path="/login" component={Login} />
       <Route path="/dashboard" component={Dashboard} /> 
     </div>
     
