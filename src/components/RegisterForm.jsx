@@ -1,16 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { login } from '../store/actions'
+import { register} from '../store/actions'
 
-const LoginForm = props =>{
+const RegisterForm = props =>{
     const handleSubmit = e => {
         e.preventDefault();
-        props.login(e.target.value)
+        props.register(e.target.value)
     }
     return (
         <div className="login-form-wrapper" onSubmit={handleSubmit}>
-            <h2 className="login-form-title"><i className="fas fa-headphones fa-1x"></i> Login</h2>
+            <h2 className="login-form-title"><i className="fas fa-headphones fa-1x"></i> Register</h2>
             <form>
                 <label htmlFor="email">Email: </label>
                 <input type="text" name="email" id="email" placeholder="johndoe@unknown.app" />
@@ -20,9 +20,9 @@ const LoginForm = props =>{
                 
                 <button type="submit">Login</button> 
             </form>
-            <p>If you don't have an account <Link to="/register"> click here to register</Link>.</p>
+            <p>If you already have an account <Link to="/login"> click here to Login</Link>.</p>
         </div>
     );
 }
 
-export default connect(({})=>({}), {login})(LoginForm);
+export default connect(({})=>({}), {register})(RegisterForm);

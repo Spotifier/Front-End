@@ -7,12 +7,16 @@ const Navigation = (props) =>{
             <div className="logo">
             <i className="fab fa-spotify fa-1x"></i><h2> Spotifire</h2>
             </div>
-                <div className="navigation-links">
+                {localStorage.getItem('token')&&<div className="navigation-links">
                 <Link to="/dashboard/">Dashboard</Link>
                 <Link to="/dashboard/saved/">Saved Songs</Link>
-                <button onClick={() => console.log('Logout')}>Logout</button>
+                <button onClick={() => { 
+                    localStorage.removeItem('token');
+                    props.history.push('/login');
+                }}
+                >Logout</button>
                 {/* <Link to="/dashboard/profile/">Profile</Link> */}
-            </div>
+            </div>}
         </nav>
     );
 };
