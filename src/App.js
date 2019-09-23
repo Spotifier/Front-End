@@ -5,14 +5,16 @@ import {Route} from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
+import Saved from './components/Saved';
 
 function App() {
 
   return (
-    <div class="app-wrapper">
+    <div className="app-wrapper">
       <Navigation />
       <Route exact path="/login" component={Login} />
-      <Route path="/dashboard" component={Dashboard} /> 
+      <Route exact path="/dashboard" component={Dashboard} /> 
+      <Route path="/dashboard/saved" component={Saved} />
     </div>
     
   );
