@@ -1,8 +1,7 @@
 import React from 'react';
-import RegisterForm from './RegisterForm'
 
 const Register = () =>{
-    return(<RegisterForm />);
+    return(<h1>Register to start searching for the songs you want!</h1>);
 };
 
 export default Register;

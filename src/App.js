@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 
 // Application Component Imports
@@ -14,6 +14,7 @@ function App() {
   return (
     <div className="app-wrapper">
       <Route path='/' component={Navigation} />
+      <Route exact path='/' render={() => (<Redirect to='/dashboard' />)}/>
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
       <PrivateRoute exact path="/dashboard" component={Dashboard} /> 
