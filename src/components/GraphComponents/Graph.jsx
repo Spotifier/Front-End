@@ -10,6 +10,11 @@ const Graph = ({ song }) => {
         return Array(10).fill(null).map((item, idx) => <Line key={idx} left={idx * 10} />)
     }
 
+    const renderMarkers = () => {
+        return Array(11).fill(null).map((item, idx) => 
+            <span key ={idx} className="marker" style={{left: `${idx * 7.5}%`}}>{idx * 10}</span>);
+    }
+
     return (
         <div className="graph-wrapper">
 
@@ -26,6 +31,13 @@ const Graph = ({ song }) => {
                     <Bar percent={song.speechiness * 100} />
                 </div>
             </div>
+            <div className="marker-container">
+                <div className="graph-filler"></div>
+                <div className="markers">
+                    { renderMarkers() }
+                </div>
+            </div>
+
 
         </div>
     );

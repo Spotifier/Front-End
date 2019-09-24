@@ -5,8 +5,8 @@ const Line = ({ left }) => {
     return (
         <div 
             className="line" 
-            style={{left: `${left}%`}}
-        />
+            style={{left: `${left}%`}}>
+        </div>
     );
 };
 

@@ -46,4 +46,20 @@
         border-right: 1px solid #222;
 
     }
-}
+
+} // .graph
+
+.markers {
+    width: 100%;
+    position: relative;
+    background: #353d45;
+    padding-left: 20%;
+    
+    
+    .marker {
+        position: relative;
+        font-weight: 300;
+        font-size: 1.2rem;
+        color: white;
+    }
+} //.markers
