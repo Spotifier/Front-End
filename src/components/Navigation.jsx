@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../store/actions'
 
 const Navigation = (props) =>{
     return (
@@ -7,12 +9,11 @@ const Navigation = (props) =>{
             <div className="logo">
             <i className="fab fa-spotify fa-1x"></i><h2> Spotifire</h2>
             </div>
-                {localStorage.getItem('token')&&<div className="navigation-links">
+                {props.dashboard.currentUser&&<div className="navigation-links">
                 <Link to="/dashboard/">Dashboard</Link>
                 <Link to="/dashboard/saved/">Saved Songs</Link>
                 <button onClick={() => { 
-                    localStorage.removeItem('token');
-                    props.history.push('/login');
+                    props.logout()
                 }}
                 >Logout</button>
                 {/* <Link to="/dashboard/profile/">Profile</Link> */}
@@ -21,4 +22,4 @@ const Navigation = (props) =>{
     );
 };
 
-export default Navigation;
+export default connect((state) => ({...state}), { logout })(Navigation);

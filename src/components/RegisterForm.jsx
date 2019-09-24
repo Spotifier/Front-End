@@ -67,8 +67,9 @@ const FormikRegisterForm = withFormik({
 
     }),
 
-    handleSubmit(values, {resetForm}){
-        console.log(values);
+    handleSubmit(values, {resetForm, ...rest }){
+        rest.props.register({username: values.username, password: values.pass})
+        rest.props.history.push('/dashboard')
         resetForm('');
     }
 })
