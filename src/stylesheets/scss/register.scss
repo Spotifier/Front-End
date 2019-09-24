@@ -1,11 +1,11 @@
-.login-page{
+.register-page{
     display:flex;
     align-items:center;
     justify-content: center;
     width:100%;
 }
 
-.login-form-wrapper{
+.register-form-wrapper{
     width:600px;
     padding:20px;
     background-color:#333c;
@@ -26,7 +26,7 @@
         flex-direction:column;
         justify-content: right;
 
-        .login-status{
+        .register-status{
             margin:5px 0;
             font-size:1.2rem;
             p{
