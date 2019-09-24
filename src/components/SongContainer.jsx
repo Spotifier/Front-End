@@ -1,7 +1,9 @@
 import React from "react";
 
+import Graph from "./GraphComponents/Graph";
+
 const SongContainer = ({ song }) => {
-    console.log(song)
+console.log(song);
     return (
         <div className="song-container">
             <div className="song-info">
@@ -17,6 +19,7 @@ const SongContainer = ({ song }) => {
                 <hr />
                 <p> stuff and stuff </p>
             </div>
+            <Graph song={song} />
         </div>
 
     );

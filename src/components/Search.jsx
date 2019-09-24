@@ -49,7 +49,7 @@ const Search = props => {
                 id={`${props.type}Search`} 
                 placeholder={props.placeholder}  
                 onChange={searchChange} 
-                autocomplete="off"/>
+                autoComplete="off"/>
         </div>
     );
 };
