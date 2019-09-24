@@ -1,25 +1,43 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Search from './Search';
 
+import SongCard from "./SongCard";
+import SongOption from "./SongOption";
+
 const Dashboard = ({match, search}) =>{
 
     const [currentSearch, setCurrentSearch] = useState();
-    console.log(search);
-    const testEvent = searchField =>{
-        console.log(`Searching for information in search bar.. ${searchField.value}`);
-        setCurrentSearch(searchField.value);
-    };
+    const [searchResult, setSearchResult] = useState([]);
+    const [songSelected, setSongSelected] = useState('');
+    const [songOptionSelected, setSongOptionSelected] = useState(false)
+
+    // const testEvent = searchField =>{
+    //     setCurrentSearch(searchField.value);
+    // };
 
 
     return(
         <div className="dashboard-wrapper">
-            <Search type="music" placeholder="Search for a song" changeEvent={testEvent} eventTimer="800"/>
-            {currentSearch && <div className="searchResultTitle"><h2>Search results for {currentSearch}:</h2></div>}
+            <Search 
+                type="music"
+                placeholder="Search for a song"
+                eventTimer="800"
+                songList={search.songList}
+                setSearchResult={setSearchResult}
+                setSongOptionSelected={setSongOptionSelected}
+                songOptionSelected={songOptionSelected}
+            />
 
-            { search.songList.map(song => <p>{song.track_name}</p>)}
+            <div className="song-option-container">
+                { 
+                    !songOptionSelected && searchResult.map((song, index) => 
+                        <SongOption key={index} song={song} setSongSelected={setSongSelected} setSongOptionSelected={setSongOptionSelected} />)
+                }
+            </div>
             
+            { songOptionSelected && <SongCard song={songSelected} />}
 
             {/* <Route path={`${match.url}/profile`} render={ ()=>{
                 // Display Profile Component
