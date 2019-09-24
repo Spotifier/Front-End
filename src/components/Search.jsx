@@ -1,4 +1,6 @@
 import React, {useRef, useCallback} from 'react';
+import { connect } from 'react-redux'
+import { search } from '../store/actions'
 
 const Search = props => {
     const timer = useRef;
@@ -9,7 +11,7 @@ const Search = props => {
             // Emptied Search.. do nothing
         }else{
             props.changeEvent(searchField);
-            searchField.value = '';
+            props.search(searchField.value)
         }
         
         // props.changeEvent();
@@ -30,4 +32,4 @@ const Search = props => {
     );
 };
 
-export default Search;
+export default connect(()=>({}), { search })(Search);

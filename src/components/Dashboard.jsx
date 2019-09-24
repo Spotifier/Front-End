@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Search from './Search';
+import { getSearch } from '../store/actions';
 
-const Dashboard = ({match, search}) =>{
+const Dashboard = ({match, search, getSearch}) =>{
 
     const [currentSearch, setCurrentSearch] = useState();
     console.log(search);
@@ -12,13 +13,18 @@ const Dashboard = ({match, search}) =>{
         setCurrentSearch(searchField.value);
     };
 
+    useEffect(() => {
+        getSearch();
+    }, [getSearch])
+
+    if (search.loading) return <h1>loading...</h1>
 
     return(
         <div className="dashboard-wrapper">
             <Search type="music" placeholder="Search for a song" changeEvent={testEvent} eventTimer="800"/>
             {currentSearch && <div className="searchResultTitle"><h2>Search results for {currentSearch}:</h2></div>}
 
-            { search.songList.map(song => <p>{song.track_name}</p>)}
+            { search.searchList.slice(0, 50).map(song => <p>{song.track_name}</p>)}
             
 
             {/* <Route path={`${match.url}/profile`} render={ ()=>{
@@ -34,4 +40,4 @@ const Dashboard = ({match, search}) =>{
     );
 };
 
-export default connect(({search}) => ({search}), {})(Dashboard);
+export default connect(({search}) => ({search}), { getSearch})(Dashboard);

@@ -32,7 +32,7 @@ export const savedReducer = (state = initialState, { type, payload }) => {
             return { ...state }
         case DELETE_SAVED_SUCCESS:
             return { ...state }
-        case DELETE_SAVED_SUCCESS:
+        case DELETE_SAVED_FAILURE:
             return { ...state }
         default:
             return state;
