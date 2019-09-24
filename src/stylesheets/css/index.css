@@ -110,7 +110,6 @@ nav .logo h2 {
 
 .login-form-wrapper {
   width: 600px;
-  height: 300px;
   padding: 20px;
   background-color: #333c;
   display: flex;
@@ -151,6 +150,71 @@ nav .logo h2 {
   color: #fff;
 }
 .login-form-wrapper a {
+  text-decoration: none;
+  color: #aaa;
+}
+
+.register-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.register-form-wrapper {
+  width: 600px;
+  padding: 20px;
+  background-color: #333c;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  border: 2px solid #84bd00;
+  align-items: center;
+}
+.register-form-wrapper h2 {
+  color: #fff;
+  margin: 20px 0;
+  font-size: 3rem;
+}
+.register-form-wrapper Form {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+}
+.register-form-wrapper Form .register-status {
+  margin: 5px 0;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.register-form-wrapper Form .register-status p {
+  color: white;
+  background-color: red;
+  padding: 2px 0;
+  border-radius: 5px;
+  margin: 2px 0;
+}
+.register-form-wrapper Form input {
+  width: 300px;
+  margin: 5px 0;
+}
+.register-form-wrapper Form button {
+  height: 30px;
+  margin: 10px 0;
+  border: 1px solid #84bd00;
+  border-radius: 5px;
+  background-color: #353d45;
+  color: #fff;
+}
+.register-form-wrapper Form button:hover {
+  background-color: #3e3E4e;
+}
+.register-form-wrapper label {
+  color: #fff;
+}
+.register-form-wrapper p {
+  color: #fff;
+}
+.register-form-wrapper a {
   text-decoration: none;
   color: #aaa;
 }
