@@ -3,10 +3,10 @@ import LoginForm from './LoginForm';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const Login = ({dashboard}) =>{
+const Login = ({dashboard, history}) =>{
     return(
         <div className="login-page">
-            { dashboard.currentUser ? <Redirect to='/dashboard'/> : <LoginForm />}
+            { dashboard.currentUser ? <Redirect to='/dashboard'/> : <LoginForm history={history}/>}
         </div>
         
     );
