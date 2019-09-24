@@ -1,0 +1,64 @@
+.song-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .song-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        background: #353d45;
+        color: white;
+        width: 500px;
+        height: 250px;
+        margin: 20px auto 0;
+        padding: 20px 30px;
+        line-height: 1.5;
+        
+        h2 {
+            color: $sss_green;
+        }
+
+        hr {
+            width: 100%;
+            margin: 5px 0 15px;
+        }
+
+        .save-song-btn {
+            background-color: $sss_green;
+            border: none;
+            width: 60%;
+            margin: 20px auto 0;
+            padding: 8px 15px;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+        }
+    } // .song-info
+
+    .song-recommendations {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background: #353d45;
+        color: white;
+        width: 500px;
+        height: 250px;
+        margin: 20px auto 0;
+        padding: 20px 30px;
+
+        h2 {
+            color: $sss_green;
+        }
+
+        hr {
+            width: 100%;
+            margin: 15px 0 15px;
+        }
+    }
+}// .song-container
+
+

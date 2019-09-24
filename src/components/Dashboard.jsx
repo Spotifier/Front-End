@@ -3,7 +3,7 @@ import {Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Search from './Search';
 
-import SongCard from "./SongCard";
+import SongContainer from "./SongContainer";
 import SongOption from "./SongOption";
 
 const Dashboard = ({match, search}) =>{
@@ -37,7 +37,7 @@ const Dashboard = ({match, search}) =>{
                 }
             </div>
             
-            { songOptionSelected && <SongCard song={songSelected} />}
+            { songOptionSelected && <SongContainer song={songSelected} />}
 
             {/* <Route path={`${match.url}/profile`} render={ ()=>{
                 // Display Profile Component
