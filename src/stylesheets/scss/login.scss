@@ -21,10 +21,23 @@
         font-size:3rem;
     }
 
-    form{
+    Form{
         display:flex;
         flex-direction:column;
         justify-content: right;
+
+        .login-status{
+            margin:5px 0;
+            font-size:1.2rem;
+            p{
+                color:white;
+                background-color:#F005;
+                padding:2px 5px;
+                border-radius:5px;
+                margin:2px 0;
+            }
+            
+        }
         
         input{
             width:300px;
