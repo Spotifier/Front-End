@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../store/actions'
 
 const Navigation = (props) =>{
     return (
@@ -11,8 +13,9 @@ const Navigation = (props) =>{
                 <Link to="/dashboard/">Dashboard</Link>
                 <Link to="/dashboard/saved/">Saved Songs</Link>
                 <button onClick={() => { 
-                    localStorage.removeItem('token');
-                    props.history.push('/login');
+                    props.logout()
+                    window.localStorage.removeItem('token')
+                    props.history.push('/')
                 }}
                 >Logout</button>
             </div>}
@@ -20,4 +23,4 @@ const Navigation = (props) =>{
     );
 };
 
-export default Navigation;
+export default connect((state) => ({...state}), { logout })(Navigation);

@@ -1,14 +1,15 @@
 import React from 'react';
 import LoginForm from './LoginForm';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Login = () =>{
+const Login = ({user, history}) => {
+    if(user.currentUser) return <Redirect to='/dashboard'/>
     return(
         <div className="login-page">
-            {localStorage.getItem('token') ? <Redirect to='/dashboard'/> : <LoginForm />}
+            { window.localStorage.getItem('token') ? <Redirect to='/dashboard'/> : <LoginForm history={history}/>}
         </div>
-        
     );
 };
 
-export default Login;
+export default connect((state) => ({...state}), {})(Login);

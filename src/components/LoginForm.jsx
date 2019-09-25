@@ -49,11 +49,11 @@ const FormikLoginForm = withFormik({
 
     }),
 
-    handleSubmit(values, {resetForm}){
-        console.log(values);
+    handleSubmit(values, {resetForm, ...rest}){
+        rest.props.login({...values})
         resetForm('');
     }
 
 });
 
-export default connect(({})=>({}), {login})(FormikLoginForm(LoginForm));
+export default connect((state)=>({...state}), {login})(FormikLoginForm(LoginForm));

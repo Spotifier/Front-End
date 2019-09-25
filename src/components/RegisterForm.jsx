@@ -67,10 +67,11 @@ const FormikRegisterForm = withFormik({
 
     }),
 
-    handleSubmit(values, {resetForm}){
-        console.log(values);
+    handleSubmit(values, {resetForm, ...rest }){
+        rest.props.register({username: values.username, password: values.pass})
+        rest.props.history.push('/dashboard')
         resetForm('');
     }
-})
+});
 
-export default connect(({})=>({}), {register})(FormikRegisterForm(RegisterForm));
+export default connect((state)=>({...state}), {register})(FormikRegisterForm(RegisterForm));
