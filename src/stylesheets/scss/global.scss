@@ -14,3 +14,16 @@ body{
     margin:0;
     overflow-y:hidden;
 }
+
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#353d45;
+}
+
+::-webkit-scrollbar-thumb{
+    background: $sss_green;
+}
