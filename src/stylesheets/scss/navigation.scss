@@ -67,20 +67,23 @@ nav{
         }
     }
     
+    a{
+        cursor: pointer;
+        text-decoration:none;
 
     .logo{
         width: 200px;
         display:flex;
         align-items:center;
         justify-content: space-evenly;
-        font-size: 4.2rem;
-
+        font-size: 4.2rem; 
         color:$sss_green;
 
         h2{
             font-size:3rem;
             color:#fff;
+            
         }
     }
 }
-
+}
