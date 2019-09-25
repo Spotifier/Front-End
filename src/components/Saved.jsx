@@ -1,10 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
+
+import Song from './Song';
+import {dummyData} from '../store/local_data';
+
+
 
 const Saved = props =>{
+    
+    const [savedSongs, setSavedSongs] = useState(dummyData);
+
     return (
         <div className="saved-wrapper">
-            <h2>My Saved Songs</h2>
-            <p>Totally list saved songs here</p>
+            
+            <div className="songs-saved-title">
+                <h1>Saved Songs</h1>
+            </div>
+            
+            <div className="songs-wrapper">
+            {savedSongs.map((song, index) =>{
+                return(<Song key={index} song={song}/>)
+                })
+            }
+            </div>
         </div>
     );
 };
