@@ -74,4 +74,4 @@ const FormikRegisterForm = withFormik({
     }
 })
 
-export default connect(({})=>({}), {register})(FormikRegisterForm(RegisterForm));
+export default connect((state)=>({...state}), {register})(FormikRegisterForm(RegisterForm));

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 import { dashboardReducer } from './reducers/dashaboardReducer';
-import { savedReducer } from './reducers/savedReudcer';
+import { userReducer } from './reducers/userReudcer';
 import { searchReducer } from './reducers/searchReducer';
 
-export const rootReducer = combineReducers({search: searchReducer, saved: savedReducer, dashboard: dashboardReducer})
+export const rootReducer = combineReducers({search: searchReducer, user: userReducer, dashboard: dashboardReducer})
