@@ -1,42 +1,24 @@
-import React, {useState, useRef, useEffect, useCallback} from 'react';
+import React, {useRef, useCallback} from 'react';
 
 const Search = props => {
-    // const timer = useRef;
+    const timer = useRef;
 
-    const [searchTerm, setSearchTerm] = useState('');
-
-    useEffect(() => {
-        let result; 
-        searchTerm === "" 
-            ? result = []
-            : result = props.songList.filter(song => song.track_name.includes(searchTerm));
-        props.setSearchResult(result);
-
-    }, [searchTerm])
-
-    useEffect(() => {
-        props.songOptionSelected && setSearchTerm('');
-    }, [props.songOptionSelected])
-
-    // const triggerSearchEvent = useCallback( () =>{
-    //     let searchField = document.querySelector(`#${props.type}Search`);
-    //     if(searchField.value === ''){
-    //         // Emptied Search.. do nothing
-    //     }else{
-    //         props.changeEvent(searchField);
-    //         searchField.value = '';
-    //     }
+    const triggerSearchEvent = useCallback( () =>{
+        let searchField = document.querySelector(`#${props.type}Search`);
         
-    //     props.changeEvent();
-    //     clearInterval(timer.current);
-    // }, [props, timer]);
+        if(searchField.value === ''){
+            // Emptied Search.. do nothing
+        }else{
+            props.setSongOptionSelected(false);
+            props.changeEvent(searchField);
+        }
+        
+        clearInterval(timer.current);
+    }, [props, timer]);
 
     const searchChange = e =>{
-        // clearInterval(timer.current);
-        // timer.current = setInterval(triggerSearchEvent, props.eventTimer);
-        setSearchTerm(e.target.value);
-        props.setSongOptionSelected(false);
-
+        clearInterval(timer.current);
+        timer.current = setInterval(triggerSearchEvent, props.eventTimer);
     };
 
     return (
@@ -45,7 +27,6 @@ const Search = props => {
             <input 
                 type="text" 
                 name={`${props.type}Search`} 
-                value={searchTerm}
                 id={`${props.type}Search`} 
                 placeholder={props.placeholder}  
                 onChange={searchChange} 
