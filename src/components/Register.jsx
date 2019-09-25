@@ -7,7 +7,6 @@ const Register = ({history}) =>{
         <div className="register-page">
             {localStorage.getItem('token') ? <Redirect to='/dashboard'/> : <RegisterForm history={history}/>}
         </div>
-        
     );
 };
 

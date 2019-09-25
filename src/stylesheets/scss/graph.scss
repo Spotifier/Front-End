@@ -1,14 +1,19 @@
+.graph-wrapper{
+    padding-top:20px;
+    background: #353d45;
+    width:100%;
+    height:250px;
+
 .graph {
     display: flex;
     position: relative;
-    width: 800px;
+    width: 100%;
     height: 200px;
     background: #ddd;
-    margin-top: 50px;
 
     .bar-text-content {
         height: 100%;
-        width: 20%;
+        width: 30%;
         background: #353d45;
         text-align: right;
         color: white;
@@ -25,7 +30,7 @@
         justify-content: space-between;
         padding: 10px 0;
         height: 100%;
-        width: 80%;
+        width: 70%;
         background: #353d45;
     }
 
@@ -49,17 +54,23 @@
 
 } // .graph
 
-.markers {
-    width: 100%;
-    position: relative;
-    background: #353d45;
-    padding-left: 20%;
-    
-    
-    .marker {
+
+.marker-container{
+    width:95%;
+
+    .markers {
+        width: 100%;
         position: relative;
-        font-weight: 300;
-        font-size: 1.2rem;
-        color: white;
-    }
-} //.markers
+        background: #353d45;
+        padding-left: 30%;
+    
+    
+        .marker {
+            position: relative;
+            font-weight: 300;
+            font-size: 1.2rem;
+            color: white;
+        }
+    } //.markers
+}
+}
