@@ -31,13 +31,13 @@ const Graph = ({ song }) => {
                     <Bar percent={song.speechiness * 100} />
                 </div>
             </div>
-
-
             <div className="marker-container">
+                <div className="graph-filler"></div>
                 <div className="markers">
                     { renderMarkers() }
                 </div>
             </div>
+
 
         </div>
     );

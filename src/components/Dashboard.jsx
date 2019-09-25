@@ -1,62 +1,55 @@
-import React, { useState, useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Search from './Search';
 
 import SongContainer from "./SongContainer";
 import SongOption from "./SongOption";
 
-const Dashboard = ({ match, search }) => {
+const Dashboard = ({match, search}) =>{
 
-    // const [currentSearch, setCurrentSearch] = useState();
+    const [currentSearch, setCurrentSearch] = useState();
     const [searchResult, setSearchResult] = useState([]);
     const [songSelected, setSongSelected] = useState('');
     const [songOptionSelected, setSongOptionSelected] = useState(false)
-    const [matchingSongs, setMatchingSongs] = useState();
 
-    const testEvent = searchField => {
-        setMatchingSongs(search.songList.filter(song => (song.artist_name.toLowerCase().includes(searchField.value.toLowerCase()) || song.track_name.toLowerCase().includes(searchField.value.toLowerCase()))));
-    };
+    // const testEvent = searchField =>{
+    //     setCurrentSearch(searchField.value);
+    // };
 
 
-    return (
+    return(
         <div className="dashboard-wrapper">
+            <Search 
+                type="music"
+                placeholder="Search for a song"
+                eventTimer="800"
+                songList={search.songList}
+                setSearchResult={setSearchResult}
+                setSongOptionSelected={setSongOptionSelected}
+                songOptionSelected={songOptionSelected}
+            />
 
-
-            <div className="search-side">
-                <div className="searchField">
-                <Search
-                    type="music"
-                    placeholder="Search for a song"
-                    eventTimer="800"
-                    changeEvent={testEvent}
-                    songList={search.songList}
-                    setSearchResult={setSearchResult}
-                    setSongOptionSelected={setSongOptionSelected}
-                    songOptionSelected={songOptionSelected}
-                />
-                </div>
-                <div className="searchResults">
-
-                
-                {matchingSongs && matchingSongs.map((song, index) => {
-                    return <SongOption key={index} song={song} setSongSelected={setSongSelected} setSongOptionSelected={setSongOptionSelected} />
-                    //  <p key={index}>{`Song: ${song.track_name} Artist: ${song.artist_name} Duration: ${Math.floor((song.duration_ms / 1000)/ 60)}:${(song.duration_ms % 60).toString().padStart(2,'0')}`}</p>
-                })}</div>
+            <div className="song-option-container">
+                { 
+                    !songOptionSelected && searchResult.map((song, index) => 
+                        <SongOption key={index} song={song} setSongSelected={setSongSelected} setSongOptionSelected={setSongOptionSelected} />)
+                }
             </div>
+            
+            { songOptionSelected && <SongContainer song={songSelected} />}
 
-            <div className="songProfile">
-                {songOptionSelected && <SongContainer song={songSelected} />}
-            </div>
+            {/* <Route path={`${match.url}/profile`} render={ ()=>{
+                // Display Profile Component
+                return(<h2>Profile Component</h2>);
+            }} /> */}
 
-
-
-            <Route path={`${match.url}/songs`} render={() => {
+            <Route path={`${match.url}/songs`} render={ () =>{
                 //Display Saved Songs Component
-                return (<h2>Saved Songs Component</h2>);
+                return(<h2>Saved Songs Component</h2>);
             }} />
         </div>
     );
 };
 
-export default connect(({ search }) => ({ search }), {})(Dashboard);
+export default connect(({search}) => ({search}), {})(Dashboard);
