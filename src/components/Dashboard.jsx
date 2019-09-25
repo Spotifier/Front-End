@@ -5,13 +5,18 @@ import Search from './Search';
 import { getSearch } from '../store/actions';
 
 const Dashboard = ({match, search, getSearch}) =>{
+import SongContainer from "./SongContainer";
+import SongOption from "./SongOption";
+
 
     const [currentSearch, setCurrentSearch] = useState();
-    console.log(search);
-    const testEvent = searchField =>{
-        console.log(`Searching for information in search bar.. ${searchField.value}`);
-        setCurrentSearch(searchField.value);
-    };
+    const [searchResult, setSearchResult] = useState([]);
+    const [songSelected, setSongSelected] = useState('');
+    const [songOptionSelected, setSongOptionSelected] = useState(false)
+
+    // const testEvent = searchField =>{
+    //     setCurrentSearch(searchField.value);
+    // };
 
     useEffect(() => {
         getSearch();
@@ -21,11 +26,24 @@ const Dashboard = ({match, search, getSearch}) =>{
 
     return(
         <div className="dashboard-wrapper">
-            <Search type="music" placeholder="Search for a song" changeEvent={testEvent} eventTimer="800"/>
-            {currentSearch && <div className="searchResultTitle"><h2>Search results for {currentSearch}:</h2></div>}
+            <Search 
+                type="music"
+                placeholder="Search for a song"
+                eventTimer="800"
+                songList={search.songList}
+                setSearchResult={setSearchResult}
+                setSongOptionSelected={setSongOptionSelected}
+                songOptionSelected={songOptionSelected}
+            />
 
-            { search.searchList.slice(0, 50).map(song => <p>{song.track_name}</p>)}
+            <div className="song-option-container">
+                { 
+                    !songOptionSelected && searchResult.map((song, index) => 
+                        <SongOption key={index} song={song} setSongSelected={setSongSelected} setSongOptionSelected={setSongOptionSelected} />)
+                }
+            </div>
             
+            { songOptionSelected && <SongContainer song={songSelected} />}
 
             {/* <Route path={`${match.url}/profile`} render={ ()=>{
                 // Display Profile Component

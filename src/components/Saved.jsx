@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 const Saved = props =>{
     return (
         <div className="saved-wrapper">
-            <h2>{`"${props.dashboard.currentUser}"'s`} Saved Songs</h2>
+            <h2>{`"${props.use.currentUser}"'s`} Saved Songs</h2>
             <p>Totally list saved songs here</p>
         </div>
     );
