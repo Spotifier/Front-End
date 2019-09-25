@@ -18,6 +18,7 @@ const Dashboard = ({ match, search, getSearch }) => {
         setMatchingSongs(search.songList.filter(song => (song.artist_name.toLowerCase().includes(searchField.value.toLowerCase()) || song.track_name.toLowerCase().includes(searchField.value.toLowerCase()))));
     };
 
+
     return (
         <div className="dashboard-wrapper">
 

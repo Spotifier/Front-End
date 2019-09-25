@@ -72,6 +72,6 @@ const FormikRegisterForm = withFormik({
         rest.props.history.push('/dashboard')
         resetForm('');
     }
-})
+});
 
 export default connect((state)=>({...state}), {register})(FormikRegisterForm(RegisterForm));
