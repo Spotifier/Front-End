@@ -43,8 +43,8 @@ export const login = creds => dispatch => {
         }
     })
         .then(res => {
-            dispatch({ type: LOGIN_LOADING_SUCCESS, payload: creds.username })
-            window.localStorage.setItem('token', JSON.stringify(res.data.access_token))
+            dispatch({ type: LOGIN_LOADING_SUCCESS, payload: { username: creds.username, token: res.data.access_token }})
+            
         })
         .catch(err => dispatch({ type: LOGIN_LOADING_FAILURE, payload: err }))
 }

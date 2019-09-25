@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { searchSongs } from '../store/actions'
 import Search from './Search';
 import Saved from './Saved';
-import { getSearch } from '../store/actions'
+
 import SongContainer from "./SongContainer";
 import SongOption from "./SongOption";
 
-const Dashboard = ({ match, search, getSearch }) => {
+const Dashboard = ({ match, search, searchSongs }) => {
 
     const [searchResult, setSearchResult] = useState([]);
     const [songSelected, setSongSelected] = useState('');
@@ -15,7 +16,7 @@ const Dashboard = ({ match, search, getSearch }) => {
     const [matchingSongs, setMatchingSongs] = useState();
 
     const testEvent = searchField => {
-        setMatchingSongs(search.songList.filter(song => (song.artist_name.toLowerCase().includes(searchField.value.toLowerCase()) || song.track_name.toLowerCase().includes(searchField.value.toLowerCase()))));
+        searchSongs(searchField.value.toLowerCase());
     };
 
 
@@ -39,7 +40,7 @@ const Dashboard = ({ match, search, getSearch }) => {
 
 
                 <div className="searchResults">
-                    {matchingSongs && searchResult && matchingSongs.map((song, index) => {
+                    { search.searchList.slice(0,30).map((song, index) => {
                         return <SongOption key={index} song={song} setSongSelected={setSongSelected} setSongOptionSelected={setSongOptionSelected} />
                         //  <p key={index}>{`Song: ${song.track_name} Artist: ${song.artist_name} Duration: ${Math.floor((song.duration_ms / 1000)/ 60)}:${(song.duration_ms % 60).toString().padStart(2,'0')}`}</p>
                     })}
@@ -59,5 +60,4 @@ const Dashboard = ({ match, search, getSearch }) => {
     );
 };
 
-export default connect(({search}) => ({search}), { getSearch})(Dashboard);
-
+export default connect(( state ) => ({ ...state }), { searchSongs })(Dashboard);

@@ -19,7 +19,6 @@ import {
 
 const initialState = {
     currentUser: null,
-    tokenRejected: false,
     savedList: []
 };
 
@@ -33,9 +32,10 @@ export const userReducer = (state = initialState, { type, payload }) => {
                 loading: true,
             }
         case LOGIN_LOADING_SUCCESS:
+            window.localStorage.setItem('token', JSON.stringify(payload.token))
             return {
                 ...state,
-                currentUser: payload,
+                currentUser: payload.username,
                 loading: false,
             }
         case LOGIN_LOADING_FAILURE:
@@ -52,10 +52,16 @@ export const userReducer = (state = initialState, { type, payload }) => {
         case REGISTER_LOADING_SUCCESS:
             return {
                 ...state,
+                currentUser: null,
+                error: null,
+                loading: true,
             }
         case REGISTER_LOADING_FAILURE:
             return {
                 ...state,
+                currentUser: null,
+                error: payload,
+                loading: true,
             }
         case LOGOUT_USER: 
             return {

@@ -14,6 +14,8 @@ const Navigation = (props) =>{
                 <Link to="/dashboard/saved/">Saved Songs</Link>
                 <button onClick={() => { 
                     props.logout()
+                    window.localStorage.removeItem('token')
+                    props.history.push('/')
                 }}
                 >Logout</button>
             </div>}

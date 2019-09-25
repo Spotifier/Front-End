@@ -3,10 +3,11 @@ import LoginForm from './LoginForm';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const Login = ({user, history}) =>{
+const Login = ({user, history}) => {
+    if(user.currentUser) return <Redirect to='/dashboard'/>
     return(
         <div className="login-page">
-            { user.currentUser ? <Redirect to='/dashboard'/> : <LoginForm history={history}/>}
+            { window.localStorage.getItem('token') ? <Redirect to='/dashboard'/> : <LoginForm history={history}/>}
         </div>
     );
 };
