@@ -7,18 +7,18 @@ import Saved from './Saved';
 import SongContainer from "./SongContainer";
 import SongOption from "./SongOption";
 
-const Dashboard = ({match, search}) =>{
+const Dashboard = ({ match, search }) => {
 
     const [searchResult, setSearchResult] = useState([]);
     const [songSelected, setSongSelected] = useState('');
     const [songOptionSelected, setSongOptionSelected] = useState(false)
+    const [matchingSongs, setMatchingSongs] = useState();
 
-    // const testEvent = searchField =>{
-    //     setCurrentSearch(searchField.value);
-    // };
+    const testEvent = searchField => {
+        setMatchingSongs(search.songList.filter(song => (song.artist_name.toLowerCase().includes(searchField.value.toLowerCase()) || song.track_name.toLowerCase().includes(searchField.value.toLowerCase()))));
+    };
 
-
-    return(
+    return (
         <div className="dashboard-wrapper">
 
 
@@ -45,9 +45,6 @@ const Dashboard = ({match, search}) =>{
                 </div>
 
             </div>
-            
-            { songOptionSelected && <SongContainer song={songSelected} />}
-
 
             <div className="songProfile">
                 {songOptionSelected && <SongContainer song={songSelected} />}
@@ -61,4 +58,4 @@ const Dashboard = ({match, search}) =>{
     );
 };
 
-export default connect(({search}) => ({search}), {})(Dashboard);
+export default connect(({ search }) => ({ search }), {})(Dashboard);

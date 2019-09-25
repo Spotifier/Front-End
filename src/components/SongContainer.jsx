@@ -5,6 +5,7 @@ import Graph from "./GraphComponents/Graph";
 const SongContainer = ({ song }) => {
 console.log(song);
     return (
+        <>
         <div className="song-container">
             <div className="song-info">
                 <h2>Song</h2>
