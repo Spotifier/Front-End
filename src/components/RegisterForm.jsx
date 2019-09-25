@@ -71,6 +71,6 @@ const FormikRegisterForm = withFormik({
         console.log(values);
         resetForm('');
     }
-});
+})
 
 export default connect(({})=>({}), {register})(FormikRegisterForm(RegisterForm));
