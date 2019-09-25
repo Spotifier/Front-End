@@ -6,7 +6,7 @@
         background: #353d45;
         color: white;
         width: 45%;
-        height: 250px;
+        height:350px;
         padding: 20px 30px;
         line-height: 1.5;
         
@@ -19,6 +19,12 @@
             background: white;
             border-style: 1px solid white;
             margin: 5px 0 15px;
+        }
+
+        .spotify-player{
+            width:100%;
+            margin:10px 0;
+            height:80px;
         }
 
         .save-song-btn {
@@ -39,7 +45,7 @@
         background: #353d45;
         color: white;
         width: 50%;
-        height: 250px;
+        height: 350px;
         padding: 20px 30px;
 
         h2 {

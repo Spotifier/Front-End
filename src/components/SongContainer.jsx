@@ -13,6 +13,9 @@ console.log(song);
                 <p>Artist: <em>{song.artist_name}</em></p>
                 <p>Track: <em>{song.track_name}</em></p>
                 <p>Duration: {Math.floor((song.duration_ms / 1000)/ 60)}:{song.duration_ms % 60 < 10 && "0"}{song.duration_ms % 60} </p>
+
+                <iframe className="spotify-player" src={`https://open.spotify.com/embed/track/${song.track_id}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
                 <button className="save-song-btn">Save Song</button>
             </div>
 
@@ -23,7 +26,7 @@ console.log(song);
             </div>
         </div>
 
-            <div class="song-graph">
+            <div className="song-graph">
                 <Graph song={song} />
             </div>
         </>
