@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { searchSongs } from '../store/actions'
+import { searchSongs, getSearch } from '../store/actions'
 import Search from './Search';
 import Saved from './Saved';
 
 import SongContainer from "./SongContainer";
 import SongOption from "./SongOption";
 
-const Dashboard = ({ match, search, searchSongs }) => {
+const Dashboard = ({ match, search, searchSongs, getSearch }) => {
 
     const [searchResult, setSearchResult] = useState([]);
     const [songSelected, setSongSelected] = useState('');
@@ -18,7 +18,6 @@ const Dashboard = ({ match, search, searchSongs }) => {
     const testEvent = searchField => {
         searchSongs(searchField.value.toLowerCase());
     };
-
 
     return (
         <div className="dashboard-wrapper">
@@ -60,4 +59,4 @@ const Dashboard = ({ match, search, searchSongs }) => {
     );
 };
 
-export default connect(( state ) => ({ ...state }), { searchSongs })(Dashboard);
+export default connect(( state ) => ({ ...state }), { searchSongs, getSearch})(Dashboard);

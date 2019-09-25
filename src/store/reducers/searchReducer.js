@@ -4,7 +4,8 @@ const initialState = {
     songList : dummyData,
     loading: false,
     searchList: [],
-    error: null
+    error: null,
+    dataLoaded: window.localStorage.getItem('data') ? true : false
 };
 
 export const searchReducer = (state = initialState, { type, payload }) => {
