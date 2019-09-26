@@ -44,11 +44,6 @@ const Dashboard = ({ match, search, getSearch, dashboard }) => {
                 {dashboard.currentSong&&<SongContainer song={dashboard.currentSong} />}
             </div>
 
-            <Route path={`${match.url}/track`} render={({match})=>{
-                console.log(match);
-                return(<h2>{match.params.id}</h2>)
-            }} />
-
             <Route path={`${match.url}/songs`} render={() => {
                 //Display Saved Songs Component
                 return (<Saved />);
