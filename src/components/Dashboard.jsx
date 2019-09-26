@@ -6,6 +6,7 @@ import Search from './Search';
 import Saved from './Saved';
 import SongContainer from "./SongContainer";
 import SongOption from "./SongOption";
+import Loader from './Loader';
 const Dashboard = ({ match, search, getSearch, getSaved, dashboard }) => {
     useEffect(() => {
         getSaved()
@@ -16,7 +17,7 @@ const Dashboard = ({ match, search, getSearch, getSaved, dashboard }) => {
 
     return (
         <div className="dashboard-wrapper">
-
+            <Loader message="Loading the dashboard.."/>
 
             <div className="search-side">
                 <div className="searchField">
