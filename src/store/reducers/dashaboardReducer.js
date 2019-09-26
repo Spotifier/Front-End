@@ -6,9 +6,9 @@ import {
 
 const initialState = {
     currentSong: null,
-    newSongList: null,
     loading: false,
-    error: null
+    error: null,
+    similiarTracks: []
 };
 
 export const dashboardReducer = (state = initialState, { type, payload }) => {
@@ -21,13 +21,14 @@ export const dashboardReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 currentSong: payload,
                 loading: true,
-                error: null
+                error: null,
+                similiarTracks: []
             }
         case DASHBOARD_LOADING_SUCCESS:
             return {
                 ...state,
-                newSongList: payload,
-                loading: false
+                loading: false,
+                similiarTracks: payload,
             }
         case DASHBOARD_LOADING_FAILURE:
             return {

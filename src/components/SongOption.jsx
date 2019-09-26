@@ -1,17 +1,16 @@
 import React from "react";
+import { getDashboard } from '../store/actions'
+import { connect } from 'react-redux'
 
 const SongOption = props => {
 
     const selectSong = () => {
-        props.setSongOptionSelected(true);
-        props.setSongSelected(props.song);
-
+        props.getDashboard(props.song);
         let searchField = document.querySelector(`#musicSearch`);
         searchField.value = '';
-
     }
 
-    return (<div className="song-option" onClick={selectSong}>{`Song: ${props.song.track_name}`} {`Arist: ${props.song.artist_name}`}</div>);
+    return (<div style={{overflow: 'hidden', cursor: 'pointer'}} className="song-option" onClick={selectSong}>{`Song: ${props.song.track_name}`} {`Arist: ${props.song.artist_name}`}</div>);
 }
 
-export default SongOption;
+export default connect(state => ({...state}), { getDashboard })(SongOption);

@@ -1,13 +1,12 @@
-import React, {useState} from 'react';
-
+import React, { useEffect } from 'react';
 import Song from './Song';
-import { dummyData } from '../store/local_data';
 import { connect } from 'react-redux'
+import { getSaved } from '../store/actions'
 
-const Saved = props =>{
-    
-    const [savedSongs, setSavedSongs] = useState(dummyData);
-
+const Saved = ({user, getSaved}) =>{
+    useEffect(() => {
+        getSaved()
+    }, [getSaved])
     return (
         <div className="saved-wrapper">
             
@@ -16,7 +15,7 @@ const Saved = props =>{
             </div>
             
             <div className="songs-wrapper">
-            {savedSongs.map((song, index) =>{
+            {user.savedList.map((song, index) =>{
                 return(<Song key={index} song={song}/>)
                 })
             }
@@ -25,4 +24,4 @@ const Saved = props =>{
     );
 };
 
-export default connect((state) => ({...state}))(Saved);
+export default connect((state) => ({...state}),{ getSaved })(Saved);

@@ -6,7 +6,7 @@
         background: #353d45;
         color: white;
         width: 45%;
-        height:350px;
+        height:100%;
         padding: 20px 30px;
         line-height: 1.5;
         
@@ -45,7 +45,8 @@
         background: #353d45;
         color: white;
         width: 50%;
-        height: 350px;
+        height: 100%;
+        max-height: 500px;
         padding: 20px 30px;
 
         h2 {
@@ -58,8 +59,12 @@
             border-style: 1px solid white;
             margin: 15px 0 15px;
         }
+        p {
+            padding: .5rem 0;
+            color: whitesmoke
+        }
     }
 
 .song-graph{
-    width:100%;
+    width: 100%;
 }
