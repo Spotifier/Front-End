@@ -21,7 +21,6 @@ export const ADD_SAVED_START = "ADD_SAVED_START";
 export const ADD_SAVED_SUCCESS = "ADD_SAVED_SUCCESS";
 export const ADD_SAVED_FAILURE = "ADD_SAVED_FAILURE";
 export const addToSaved = track => dispatch => {
-    
     dispatch({ type: ADD_SAVED_START })
     axiosWithAuth().post(`/tracks/save/${track.track_id}`)
         .then(() => dispatch({ type: ADD_SAVED_SUCCESS, payload: track } ))
@@ -32,7 +31,6 @@ export const DELETE_SAVED_START = "DELETE_SAVED_START";
 export const DELETE_SAVED_SUCCESS = "DELETE_SAVED_SUCCESS";
 export const DELETE_SAVED_FAILURE = "DELETE_SAVED_FAILURE";
 export const deleteFromSaved = track => dispatch => {
-    console.log(track)
     dispatch({ type: DELETE_SAVED_START })
     axiosWithAuth().delete(`/tracks/remove/${track.track_id}`)
         .then(() => dispatch({ type: DELETE_SAVED_SUCCESS, payload: track }))

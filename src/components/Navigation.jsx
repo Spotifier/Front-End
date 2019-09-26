@@ -12,7 +12,7 @@ const Navigation = (props) =>{
                 {localStorage.getItem('token')&&<div className="navigation-links">
                 <Link to="/dashboard/">Dashboard</Link>
                 <Link to="/dashboard/saved/">Saved Songs</Link>
-                <button onClick={() => { 
+                <button style={{cursor: 'pointer'}} onClick={() => { 
                     props.logout()
                     window.localStorage.removeItem('token')
                     props.history.push('/')

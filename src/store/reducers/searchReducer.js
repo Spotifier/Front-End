@@ -1,4 +1,4 @@
-import { SEARCH_LOADING_START, SEARCH_LOADING_SUCCESS, SEARCH_LOADING_FAILURE, SEARCH_ITEM } from '../actions/searchActions';
+import { SEARCH_LOADING_START, SEARCH_LOADING_SUCCESS, SEARCH_LOADING_FAILURE } from '../actions/searchActions';
 import { dummyData } from '../local_data'
 const initialState = {
     songList: dummyData,

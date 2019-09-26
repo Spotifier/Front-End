@@ -10,7 +10,7 @@ const SongOption = props => {
         searchField.value = '';
     }
 
-    return (<div style={{overflow: 'hidden'}} className="song-option" onClick={selectSong}>{`Song: ${props.song.track_name}`} {`Arist: ${props.song.artist_name}`}</div>);
+    return (<div style={{overflow: 'hidden', cursor: 'pointer'}} className="song-option" onClick={selectSong}>{`Song: ${props.song.track_name}`} {`Arist: ${props.song.artist_name}`}</div>);
 }
 
 export default connect(state => ({...state}), { getDashboard })(SongOption);

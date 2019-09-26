@@ -8,7 +8,7 @@ const initialState = {
     currentSong: null,
     loading: false,
     error: null,
-    similiarTracks: null
+    similiarTracks: []
 };
 
 export const dashboardReducer = (state = initialState, { type, payload }) => {
