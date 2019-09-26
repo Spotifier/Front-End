@@ -7,18 +7,17 @@ import Saved from './Saved';
 import SongContainer from "./SongContainer";
 import SongOption from "./SongOption";
 import Loader from './Loader';
-const Dashboard = ({ match, search, getSearch, getSaved, dashboard }) => {
+const Dashboard = ({ match, search, user, getSearch, getSaved, dashboard }) => {
     useEffect(() => {
         getSaved()
     }, [getSaved])
     const testEvent = searchField => {
         getSearch(searchField.value);
     };
-
+    if (dashboard.loading) return <Loader message="Loading Song Data" />
     return (
         <div className="dashboard-wrapper">
-            <Loader message="Loading the dashboard.."/>
-
+            {user.savedLoading&&<Loader message="Saving Song To Playlist" />}
             <div className="search-side">
                 <div className="searchField">
                     <Search

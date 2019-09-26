@@ -21,7 +21,9 @@ import {
 
 const initialState = {
     currentUser: null,
-    savedList: []
+    savedList: [],
+    loading: false,
+    savedLoading: false
 };
 
 export const userReducer = (state = initialState, { type, payload }) => {
@@ -82,55 +84,55 @@ export const userReducer = (state = initialState, { type, payload }) => {
         case SAVED_LOADING_START:
             return { 
                 ...state,
-                loading: true,
+                savedLoading: true,
                 error: null
             }
         case SAVED_LOADING_SUCCESS:
             return { 
                 ...state,
-                loading: false,
+                savedLoading: false,
                 savedList: payload
             }
         case SAVED_LOADING_FAILURE:
             return { 
                 ...state,
-                loading: false,
+                savedLoading: false,
                 error: payload
              }
         case ADD_SAVED_START:
             return { 
                 ...state,
-                loading: true,
+                savedLoading: true,
                 error: null
             }
         case ADD_SAVED_SUCCESS:
             return { 
                 ...state,
-                loading: false,
+                savedLoading: false,
                 savedList: [...state.savedList, payload]
             }
         case ADD_SAVED_FAILURE:
             return { 
                 ...state,
-                loading: false,
+                savedLoading: false,
                 error: payload
              }
         case DELETE_SAVED_START:
             return { 
                 ...state,
-                loading: true,
+                savedLoading: true,
                 error: null
             }
         case DELETE_SAVED_SUCCESS:
             return { 
                 ...state,
-                loading: false,
+                savedLoading: false,
                 savedList: state.savedList.filter(track => !(track.track_id === payload.track_id))
             }
         case DELETE_SAVED_FAILURE:
             return { 
                 ...state,
-                loading: false,
+                savedLoading: false,
                 error: payload
              }
         default:

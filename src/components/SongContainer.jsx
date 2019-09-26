@@ -38,12 +38,10 @@ const SongContainer = ({
             allowtransparency="true"
             allow="encrypted-media"
           ></iframe>
-          <button onClick={() => addToSaved(song)} className="save-song-btn">
             {user.savedList.filter(track => track.track_id === song.track_id)
               .length < 1
-              ? "Save Song"
-              : "Song Saved"}
-          </button>
+              ? <button onClick={() => addToSaved(song)} className="save-song-btn">{"Save Song"}</button>
+              : <button className="save-song-btn">{"Song Saved ✔"}</button>}
         </div>
 
         <div className="song-recommendations">
