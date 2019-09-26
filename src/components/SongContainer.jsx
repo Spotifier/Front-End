@@ -1,8 +1,9 @@
 import React from "react";
-
+import { connect } from "react-redux";
+import { getDashboard } from '../store/actions'
 import Graph from "./GraphComponents/Graph";
 
-const SongContainer = ({ song }) => {
+const SongContainer = ({ song, dashboard, getDashboard }) => {
 console.log(song);
     return (
         <>
@@ -22,7 +23,7 @@ console.log(song);
             <div className="song-recommendations">
                 <h2>Similar tracks you may enjoy:</h2>
                 <hr />
-                <p> stuff and stuff </p>
+                {dashboard.similiarTracks.map(track => <p onClick={() => {getDashboard(track)}} key={track.track_id}>{track.track_name} - {track.artist_name}</p>)}
             </div>
         </div>
 
@@ -34,4 +35,4 @@ console.log(song);
     );
 }
 
-export default SongContainer;
+export default connect(state => ({...state}), { getDashboard })(SongContainer);

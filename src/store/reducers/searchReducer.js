@@ -1,15 +1,14 @@
 import { SEARCH_LOADING_START, SEARCH_LOADING_SUCCESS, SEARCH_LOADING_FAILURE, SEARCH_ITEM } from '../actions/searchActions';
 import { dummyData } from '../local_data'
 const initialState = {
-    songList : dummyData,
+    songList: dummyData,
     loading: false,
     searchList: [],
-    error: null,
-    dataLoaded: window.localStorage.getItem('data') ? true : false
+    error: null
 };
 
 export const searchReducer = (state = initialState, { type, payload }) => {
-    switch( type ) {
+    switch (type) {
         case SEARCH_LOADING_START:
             return {
                 ...state,
@@ -19,7 +18,7 @@ export const searchReducer = (state = initialState, { type, payload }) => {
         case SEARCH_LOADING_SUCCESS:
             return {
                 ...state,
-                songList: payload,
+                searchList: payload,
                 loading: false
             }
         case SEARCH_LOADING_FAILURE:
@@ -27,11 +26,6 @@ export const searchReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 error: payload,
                 loading: false
-            }
-        case SEARCH_ITEM:
-            return {
-                ...state,
-                searchList: state.songList.filter(song => song.track_name.includes(payload) || song.artist_name.includes(payload) )
             }
         default:
             return state;

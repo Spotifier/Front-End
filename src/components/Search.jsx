@@ -9,7 +9,6 @@ const Search = props => {
         if(searchField.value === ''){
             // Emptied Search.. do nothing
         }else{
-            props.setSongOptionSelected(false);
             props.changeEvent(searchField);
         }
         
