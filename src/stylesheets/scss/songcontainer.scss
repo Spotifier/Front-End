@@ -33,8 +33,13 @@
             width: 60%;
             padding: 8px 15px;
             font-family: 'Montserrat', sans-serif;
+            transition: ease 500ms;
             cursor: pointer;
-            margin:0 auto;
+            margin: 0 auto;
+            &:focus {
+                background-color: $sss_green_light;
+                outline: none;
+            }
         }
     } // .song-info
 
