@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getSearch } from '../store/actions'
+import { getSearch, getSaved } from '../store/actions'
 import Search from './Search';
 import Saved from './Saved';
-
 import SongContainer from "./SongContainer";
 import SongOption from "./SongOption";
 
-const Dashboard = ({ match, search, getSearch, dashboard }) => {
+const Dashboard = ({ match, search, getSearch, getSaved, dashboard }) => {
     const [songOptionSelected, setSongOptionSelected] = useState(false)
-
+    useEffect(() => {
+        getSaved()
+    }, [getSaved])
     const testEvent = searchField => {
         getSearch(searchField.value);
     };
@@ -52,4 +53,4 @@ const Dashboard = ({ match, search, getSearch, dashboard }) => {
     );
 };
 
-export default connect(( state ) => ({ ...state }), { getSearch })(Dashboard);
+export default connect(( state ) => ({ ...state }), { getSearch, getSaved })(Dashboard);

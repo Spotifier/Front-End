@@ -1,10 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getDashboard } from '../store/actions'
+import { getDashboard, addToSaved } from '../store/actions'
 import Graph from "./GraphComponents/Graph";
 
-const SongContainer = ({ song, dashboard, getDashboard }) => {
-console.log(song);
+const SongContainer = ({ song, dashboard, getDashboard, addToSaved }) => {
     return (
         <>
         <div className="song-data">
@@ -17,7 +16,7 @@ console.log(song);
 
                 <iframe title="spotify-player" className="spotify-player" src={`https://open.spotify.com/embed/track/${song.track_id}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
-                <button className="save-song-btn">Save Song</button>
+                <button onClick={() =>  addToSaved(song)} className="save-song-btn">Save Song</button>
             </div>
 
             <div className="song-recommendations">
@@ -35,4 +34,4 @@ console.log(song);
     );
 }
 
-export default connect(state => ({...state}), { getDashboard })(SongContainer);
+export default connect(state => ({...state}), { getDashboard, addToSaved })(SongContainer);
