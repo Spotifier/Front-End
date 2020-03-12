@@ -13,16 +13,19 @@ const LoginForm = ({values, errors, touched}) =>{
             <h2 className="login-form-title"><i className="fas fa-headphones fa-1x"></i> Login</h2>
             <Form>
 
+                {/* <label htmlFor="username">Username: </label> */}
+                <Field type="text" className="form-user" name="username" id="username" placeholder="Username" />
                 <div className="login-status">
-                    {touched.username && errors.username && (<p className="err">{errors.username}</p>)}
-                    {touched.password && errors.password && (<p className="err">{errors.password}</p>)}
+                    {/* {touched.username && errors.username && (<p className="err">{errors.username}</p>)}  */}
+                    <p className="err" style={{"visibility": touched.username && errors.username ? "": "hidden"}}>{errors.username}</p>
                 </div>
-
-                <label htmlFor="username">Username: </label>
-                <Field type="text" name="username" id="username" placeholder="JDoe1337" />
                 
-                <label htmlFor="password">Password: </label>
-                <Field type="password" name="password" id="password" />
+                {/* <label htmlFor="password">Password: </label> */}
+                <Field type="password" className="form-password" name="password" id="password" placeholder="Password" />
+                <div className="login-status">
+                    {/* {touched.password && errors.password && (<p className="err">{errors.password}</p>)} */}
+                    <p className="err" style={{"visibility": touched.password && errors.password ? "": "hidden"}}>{errors.password}</p>
+                </div>
                 
                 <button type="submit">Login</button> 
             </Form>

@@ -1,13 +1,29 @@
-.login-page{
-    display:flex;
-    align-items:center;
-    justify-content: center;
-    width:100%;
-    height:100%;
+.login-wrapper{
+    height: 92vh;
+    position: relative;
+
+    .login-page{
+        // border: 10px solid orange;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        height: 100%;
+
+
+        &:before{
+            content: "";
+            position: absolute;
+            background-color: rgba($color: #000000, $alpha: .7);
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+        }
+    }
 }
 
 .login-form-wrapper{
     width:600px;
+    height: 600px;
     padding:20px;
     background-color:#333c;
     display:flex;
@@ -20,6 +36,10 @@
         color:#fff;
         margin:20px 0;
         font-size:3rem;
+
+        i{
+            color: $sss_green;
+        }
     }
 
     Form{
@@ -33,43 +53,54 @@
             p{
                 color:white;
                 background-color:#F005;
-                padding:2px 5px;
-                border-radius:5px;
+                padding: 1.5rem;
+                border-radius:30px;
                 margin:2px 0;
             }
             
         }
         
         input{
-            width:300px;
-            margin:5px 0;
+            padding: 2rem;
+            border: none;
+            border-radius: 30px;
+            width:400px;
+            margin:1rem 0;
         }
+
+        input[type="text"],
+        input[type="password"]{
+            font-size: 1.5rem;
+        }
+
         button{
-            height:30px;
-            margin:10px 0;
+
+            padding: 2rem;
+            font-size: 2.5rem;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            font-weight: bold;
+            border-radius: 30px;
             border:1px solid $sss_green;
-            border-radius:5px;
+            // border-radius:5px;
             background-color: #353d45;
             color:#fff;
 
             &:hover{
-                background-color: #3e3E4e;
+                background-color: $sss_green;
             }
         }
-    }
-
-    label{
-        color:#fff;
     }
 
     
 
     p{
         color:#fff;
+        font-size: 1.5rem;
     }
 
     a{
-        text-decoration:none;
-        color:#aaa;
+        // text-decoration:none;
+        color:$sss_green;
     }
 }

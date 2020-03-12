@@ -6,9 +6,12 @@ import { connect } from 'react-redux';
 const Login = ({user, history}) => {
     if(user.currentUser) return <Redirect to='/dashboard'/>
     return(
-        <div className="login-page">
+        <div className="login-wrapper">
+          <div className="login-page">
             { window.localStorage.getItem('token') ? <Redirect to='/dashboard'/> : <LoginForm history={history}/>}
+          </div>
         </div>
+        
     );
 };
 
