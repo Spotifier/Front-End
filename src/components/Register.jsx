@@ -4,9 +4,12 @@ import { Redirect } from 'react-router-dom';
 
 const Register = ({history}) =>{
     return(
-        <div className="register-page">
-            {localStorage.getItem('token') ? <Redirect to='/dashboard'/> : <RegisterForm history={history}/>}
+        <div className="register-wrapper">
+            <div className="register-page">
+                {localStorage.getItem('token') ? <Redirect to='/dashboard'/> : <RegisterForm history={history}/>}
+            </div>
         </div>
+            
     );
 };
 

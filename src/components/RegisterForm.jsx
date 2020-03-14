@@ -13,24 +13,36 @@ const RegisterForm = ({values, errors, touched}) =>{
             <h2 className="register-form-title"><i className="fas fa-headphones fa-1x"></i> Register</h2>
             <Form className="register-form">
 
-                <div className="register-status">
+                {/* <div className="register-status">
                     {touched.username && errors.username && (<p className="err">{errors.username}</p>)}
                     {touched.email && errors.email && (<p className="err">{errors.email}</p>)}
                     {touched.pass && errors.pass && (<p className="err">{errors.pass}</p>)}
                     {touched.repass && errors.repass && (<p className="err">{errors.repass}</p>)}
+                </div> */}
+
+                {/* <label htmlFor="username">Username: </label> */}
+                <Field type="text" name="username" id="username" placeholder="Nerofan" />
+                <div className="register-status">
+                    <p className="err" style={{"visibility": touched.username && errors.username ? "": "hidden"}}>{errors.username}</p>
                 </div>
 
-                <label htmlFor="username">Username: </label>
-                <Field type="text" name="username" id="username" placeholder="JDoe1337" />
+                {/* <label htmlFor="email">Email: </label> */}
+                <Field type="text" name="email" id="email" placeholder="Nerofan85@gmail.com" />
+                <div className="register-status">
+                    <p className="err" style={{"visibility": touched.email && errors.email ? "": "hidden"}}>{errors.email}</p>
+                </div>
 
-                <label htmlFor="email">Email: </label>
-                <Field type="text" name="email" id="email" placeholder="johndoe@unknown.app" />
+                {/* <label htmlFor="pass">Password: </label> */}
+                <Field type="password" name="pass" id="pass" placeholder="Pasword"/>
+                <div className="register-status">
+                    <p className="err" style={{"visibility": touched.pass && errors.pass ? "": "hidden"}}>{errors.pass}</p>
+                </div>
 
-                <label htmlFor="pass">Password: </label>
-                <Field type="password" name="pass" id="pass" />
-
-                <label htmlFor="repass">Confirm password: </label>
-                <Field type="password" name="repass" id="repass" />
+                {/* <label htmlFor="repass">Confirm password: </label> */}
+                <Field type="password" name="repass" id="repass" placeholder="Password"/>
+                <div className="register-status">
+                    <p className="err" style={{"visibility": touched.repass && errors.repass ? "": "hidden"}}>{errors.repass}</p>
+                </div>
 
                 <button type="submit">Register</button>
             </Form>
