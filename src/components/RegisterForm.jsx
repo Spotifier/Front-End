@@ -33,7 +33,7 @@ const RegisterForm = ({values, errors, touched}) =>{
                 </div>
 
                 {/* <label htmlFor="pass">Password: </label> */}
-                <Field type="password" name="pass" id="pass" placeholder="Pasword"/>
+                <Field type="password" name="pass" id="pass" placeholder="Password"/>
                 <div className="register-status">
                     <p className="err" style={{"visibility": touched.pass && errors.pass ? "": "hidden"}}>{errors.pass}</p>
                 </div>

@@ -5,9 +5,11 @@ import { getSaved } from '../store/actions'
 import Loader from './Loader';
 
 const Saved = ({user, getSaved}) =>{
+    
     useEffect(() => {
         getSaved()
     }, [getSaved])
+
     if(user.savedLoading) return <Loader message="Getting users saved list"/>
     return (
         <div className="saved-wrapper">

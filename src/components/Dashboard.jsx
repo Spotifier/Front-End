@@ -7,17 +7,26 @@ import Saved from './Saved';
 import SongContainer from "./SongContainer";
 import SongOption from "./SongOption";
 import Loader from './Loader';
+
 const Dashboard = ({ match, search, user, getSearch, getSaved, dashboard }) => {
+
     useEffect(() => {
         getSaved()
     }, [getSaved])
+
     const testEvent = searchField => {
         getSearch(searchField.value);
     };
+
+    // ***TODO: Add in load spinner***
+    // Check if in the loading state or not
     if (dashboard.loading) return <Loader message="Loading Song Data" />
+
     return (
         <div className="dashboard-wrapper">
-            {user.savedLoading&&<Loader message="Saving Song To Playlist" />}
+            
+            {user.savedLoading && <Loader message="Saving Song To Playlist" />}
+
             <div className="search-side">
                 <div className="searchField">
                     <Search
@@ -42,11 +51,12 @@ const Dashboard = ({ match, search, user, getSearch, getSaved, dashboard }) => {
             <div className="songProfile">
                 {dashboard.currentSong&&<SongContainer song={dashboard.currentSong} />}
             </div>
-
+            
             <Route path={`${match.url}/songs`} render={() => {
                 //Display Saved Songs Component
                 return (<Saved />);
             }} />
+
         </div>
     );
 };

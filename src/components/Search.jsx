@@ -3,7 +3,7 @@ import React, {useRef, useCallback} from 'react';
 const Search = props => {
     const timer = useRef;
 
-    const triggerSearchEvent = useCallback( () =>{
+    const triggerSearchEvent = useCallback( () => {
         let searchField = document.querySelector(`#${props.type}Search`);
         
         if(searchField.value === ''){
